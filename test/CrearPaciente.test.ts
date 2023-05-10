@@ -19,9 +19,9 @@ describe('POST /crear_paciente', ()=>{
 
 	test('La prueba debe verificar que el endpoint de creación de pacientes devuelva una respuesta válida en formato JSON. La respuesta debe contener los siguientes campos: cédula, nombre, apellido, fecha de nacimiento y teléfono. Además, la respuesta debe tener un código de estado HTTP 200 para indicar que la creación del paciente se ha realizado correctamente. Se probará que se haya creado el paciente correctamente en la base de datos a través de un mock de la capa de datos', async()=>{
 		const paciente = {
-			cedula: 1234467,
-			nombre: 'Juan',
-			apellido: 'Pérez',
+			cedula: 1007401177,
+			nombre: 'David Alejandro',
+			apellido: 'Claros Peña',
 			fecha_nacimiento: '01-01-1980',
 			telefono: '555-5555',
 		}

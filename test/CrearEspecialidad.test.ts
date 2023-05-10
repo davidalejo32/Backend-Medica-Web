@@ -19,7 +19,7 @@ describe('POST /crear_especialidad', ()=>{
 
 	test('La solicitud POST a /especialidades debe crear una nueva especialidad en la base de datos de la aplicación. La solicitud debe incluir un objeto JSON con la propiedad "nombre" (cadena de texto) que describe el nombre de la especialidad. La respuesta debe ser un objeto JSON con un estatus 200 que incluye las propiedades de la especialidad recién creada, incluyendo su "idEspecialidad".', async()=>{
 		const especialidad = {
-			nombre: 'Medicina Generalll',
+			nombre: 'Medicina General',
 		}
 
 		const res = await request(app.app).post('/crear_especialidad').send(especialidad)
