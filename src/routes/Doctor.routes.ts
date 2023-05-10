@@ -20,6 +20,9 @@ class DoctorRouter {
 			this.doctorController.listarDoctores(req, res)
 		})
     
+		this.router.get('/doctores/:id', (req: Request, res: Response)=>{
+			this.doctorController.listarDoctoresID(req, res)
+		})
 
 		this.router.post('/crear_doctor', (req: Request, res: Response)=>{
 			this.doctorController.crearDoctor(req, res)

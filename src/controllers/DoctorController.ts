@@ -18,6 +18,26 @@ class DoctorController {
 		}
 	}
 
+	async listarDoctoresID (req: Request, res:Response) {
+		try {
+			
+			const { id } = req.params
+			
+			const doctores = await this.prismaClient.doctor.findMany({
+				where: {
+					idEspecialidad: parseInt(id)
+				}
+			})
+
+			res.json(doctores)
+		} catch (error:any) {
+			res.json({error: error.message})
+		}
+	}
+
+
+
+
 	async crearDoctor (req: Request, res: Response) {
 		try {
 			const { nombre, apellido, consultorio, correo, idEspecialidad } = req.body 

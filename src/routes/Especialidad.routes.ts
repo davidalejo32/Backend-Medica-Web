@@ -20,8 +20,8 @@ class EspecialidadRouter {
 			this.especialidadController.listarEspecialidades(req, res)
 		})
 
-		this.router.get('/especialidad/:id', (req: Request, res: Response)=>{
-			this.especialidadController.listarEspecialidad(req, res)
+		this.router.get('/especialidades/:id', (req: Request, res: Response)=>{
+			this.especialidadController.listarEspecialidadesID(req, res)
 		})
 
 		this.router.post('/crear_especialidad', (req: Request, res: Response)=>{

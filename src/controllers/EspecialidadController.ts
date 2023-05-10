@@ -19,7 +19,7 @@ class EspecialidadController {
 		}
 	}
 
-	async listarEspecialidad(req: Request, res: Response){
+	async listarEspecialidadesID(req: Request, res: Response){
 		try {
 
 			const { id } = req.params
