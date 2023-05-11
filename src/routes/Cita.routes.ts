@@ -10,8 +10,8 @@ class CitaRouter{
 		this.router = Router()
 		this.citaController = new CitaController()
 		this.routes()
-	}
 
+	}
 	private routes():void{
 
 		this.router.get('/citas', (req:Request, res:Response)=>{
@@ -23,6 +23,7 @@ class CitaRouter{
 		})
 
 	}
+
 
 }
 

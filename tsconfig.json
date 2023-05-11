@@ -9,6 +9,6 @@
     "resolveJsonModule": true
   },
 
-  "include": ["src/**/*", "test/**/*"],
+  "include": ["src/**/*", "test/**/*", "swagger.conf.ts"],
   "exclude": ["node_modules"]
 }

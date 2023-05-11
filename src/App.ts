@@ -6,6 +6,8 @@ import DoctorRouter from './routes/Doctor.routes'
 import EspecialidadRouter from './routes/Especialidad.routes'
 import CitaRouter from './routes/Cita.routes'
 
+import swaggerUI from 'swagger-ui-express'
+import { swaggerSpec } from '../swagger.conf'
 
 class App {
   
@@ -16,11 +18,19 @@ class App {
 	public especialidadRouter: any
 	public citaRouter: any
 
+
+
 	constructor(){
 		this.app = express()
 		this.app.use(express.json())
 		this.app.use(cors())
 		this.routes()
+
+		this.app.use(
+			'/api-docs',
+			swaggerUI.serve,
+			swaggerUI.setup(swaggerSpec)
+		)
 	}
 
 

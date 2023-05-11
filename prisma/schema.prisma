@@ -36,8 +36,8 @@ model Cita {
 
   Paciente       Paciente? @relation(fields: [pacienteCedula], references: [cedula])
   pacienteCedula Int?
-  Doctor         Doctor?   @relation(fields: [doctorIdDoctor], references: [idDoctor])
-  doctorIdDoctor Int?
+  Doctor         Doctor?   @relation(fields: [idDoctor], references: [idDoctor])
+  idDoctor Int?
 }
 
 model Especialidad {
