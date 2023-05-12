@@ -1,3 +1,7 @@
+/**
+ * Importacion de los archivos necesarios y rutas
+ */
+
 import express from 'express'
 import cors from 'cors'
 
@@ -9,8 +13,18 @@ import CitaRouter from './routes/Cita.routes'
 import swaggerUI from 'swagger-ui-express'
 import { swaggerSpec } from '../swagger.conf'
 
+
+/**
+ * Clase principal que representa la aplicación.
+ * @class
+ */
+
 class App {
   
+	/**
+	 * Atributos de la clase App 
+	 */
+
 	public app:any
 	private server: any
 	public pacienteRouter: any
@@ -19,6 +33,10 @@ class App {
 	public citaRouter: any
 
 
+	/**
+	 * Crea una instancia de la aplicación y configura los middleware necesarios.
+	 * @constructor
+	 */
 
 	constructor(){
 		this.app = express()
@@ -34,24 +52,40 @@ class App {
 	}
 
 
+	/**
+   * Configura las rutas de la API.
+   * @returns {void}
+   */
+
 	private routes ():any {
+		// Instancia los routers para cada entidad.
 		this.pacienteRouter = new PacienteRouter().router
 		this.doctorRouter = new DoctorRouter().router
 		this.especialidadRouter = new EspecialidadRouter().router
 		this.citaRouter = new CitaRouter().router
 
-
+		// Configura las rutas para cada router.
 		this.app.use('/', this.pacienteRouter)
 		this.app.use('/', this.doctorRouter)
 		this.app.use('/', this.especialidadRouter)
 		this.app.use('/', this.citaRouter)
 	}
 
+	/**
+   * Inicia el servidor.
+   * @returns {void}
+   */
+
 	public start ():void {
 		this.server = this.app.listen(3000, ()=>{
 			console.log('El servidor esta escuchando en el puerto 3000')
 		})
 	}
+
+	/**
+   * Cierra la conexión del servidor.
+   * @returns {void}
+   */
 
 	public close ():void {
 		this.server.close()
