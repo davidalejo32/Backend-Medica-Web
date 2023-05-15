@@ -54,7 +54,7 @@ class DoctorController {
 	 * @returns {Promise<void>}
 	 */
 
-	async listarDoctoresID (req: Request, res:Response) {
+	async listarDoctoresIDEspecialidad (req: Request, res:Response) {
 		try {
 			
 			const { id } = req.params
@@ -70,6 +70,34 @@ class DoctorController {
 			res.json({error: error.message})
 		}
 	}
+
+	/**
+	 * Manejador para la solicitud GET a /doctor/:id.
+	 * Devuelve un doctor según el ID proporcionado.
+	 * @function
+	 * @async
+	 * @param {Request} req - Objeto de solicitud de Express.
+	 * @param {Response} res - Objeto de respuesta de Express.
+	 * @returns {Promise<void>}
+	 */
+
+	async listarDoctorID (req: Request, res:Response) {
+		try {
+			
+			const { id } = req.params
+			const doctor = await this.prismaClient.doctor.findUnique({
+				where: {
+					idDoctor: parseInt(id)
+				}
+			})
+
+			res.json(doctor)
+		} catch (error:any) {
+			res.json({error: error.message})
+		}
+	}
+
+
 
 	/**
 	 * Manejador para la solicitud POST a /crear_doctor.

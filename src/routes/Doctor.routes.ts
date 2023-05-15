@@ -54,7 +54,19 @@ class DoctorRouter {
      */
 
 		this.router.get('/doctores/:id', (req: Request, res: Response)=>{
-			this.doctorController.listarDoctoresID(req, res)
+			this.doctorController.listarDoctoresIDEspecialidad(req, res)
+		})
+
+		/**
+     * Obtiene un objeto del doctor cuyo id es pasado por parametro.
+     * @route GET /doctor/:id
+     * @returns Un objeto del doctor en formato JSON.
+     * @throws {Error} Si hay algún problema al obtener el doctor.
+     */
+
+
+		this.router.get('/doctor/:id', (req: Request, res: Response)=>{
+			this.doctorController.listarDoctorID(req, res)
 		})
 
 

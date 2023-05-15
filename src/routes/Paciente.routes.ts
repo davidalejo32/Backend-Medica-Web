@@ -46,6 +46,11 @@ class PacienteRouter {
 		})
 
 
+		this.router.get('/paciente/:cedulaPaciente', (req: Request, res:Response)	=>{
+			this.pacienteController.listarPacienteId(req, res)
+		})
+
+		
 		/**
      * Crea un nuevo paciente
      * @route POST /crear_paciente

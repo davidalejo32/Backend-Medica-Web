@@ -37,6 +37,36 @@ class PacienteController {
 	}
 
 	/**
+	 * Manejador para la solicitud GET a /paciente/:id.
+	 * Devuelve un paciente según el ID(cedula) proporcionada.
+	 * @function
+	 * @async
+	 * @param {Request} req - Objeto de solicitud de Express.
+	 * @param {Response} res - Objeto de respuesta de Express.
+	 * @returns {Promise<void>}
+	 */
+
+
+	async listarPacienteId (req:Request, res: Response) {
+		try {
+
+			const {cedulaPaciente} = req.params
+
+			const paciente = await this.prismaCliente.paciente.findUnique({
+				where: {
+					cedula: parseInt(cedulaPaciente)
+				}
+			})
+
+
+			res.json(paciente)
+		} catch (error) {
+			res.json()
+		}
+	}
+
+
+	/**
 	 * Manejador para la solicitud POST a /crear_paciente
 	 * Crea un nuevo paciente médico con los siguientes datos, cedula, nombre apellido, fecha_nacimiento, telefono
 	 * @function
