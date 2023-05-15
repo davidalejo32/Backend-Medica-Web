@@ -49,7 +49,7 @@ export default {
    *         schema:
    *           type: integer
    *         required: true
-   *         description: Id dela especialidad a la que pertenecen los doctores
+   *         description: Id de la especialidad a la que pertenecen los doctores
    *     responses:
    *       200:
    *         description: Datos de los doctores que pertenecen a la especialidad
@@ -78,6 +78,46 @@ export default {
    *                   idEspecialidad: 
    *                     type: integer
    *                     description: Id del campo relacionado a la especialidad
+   * 
+   * 
+   * /doctor/{id}:
+   *   get:
+   *     summary: Obtener un solo doctor por id 
+   *     tags:
+   *       - Doctores
+   *     parameters:
+   *       - in: path
+   *         name: id 
+   *         schema:
+   *           type: integer
+   *         required: true
+   *         description: Id del doctor
+   *     responses:
+   *       200:
+   *         description: Datos del doctor
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: object
+   *               properties:
+   *                 idDoctor: 
+   *                   type: integer
+   *                   description: Id del doctor
+   *                 nombre: 
+   *                   type: string
+   *                   description: Nombre del doctor
+   *                 apellido: 
+   *                   type: string
+   *                   description: Apellido del doctor
+   *                 consultorio: 
+   *                   type: integer
+   *                   description: Consultorio del doctor
+   *                 correo: 
+   *                   type: string
+   *                   description: Correo del doctor
+   *                 idEspecialidad: 
+   *                   type: integer
+   *                   description: Id del campo relacionado a la especialidad
    * 
    * 
    * /crear_doctor:

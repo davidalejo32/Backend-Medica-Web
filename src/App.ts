@@ -9,6 +9,7 @@ import PacienteRouter from './routes/Paciente.routes'
 import DoctorRouter from './routes/Doctor.routes'
 import EspecialidadRouter from './routes/Especialidad.routes'
 import CitaRouter from './routes/Cita.routes'
+import FormularioRoutes from './routes/Formulario.routes'
 
 import swaggerUI from 'swagger-ui-express'
 import { swaggerSpec } from '../swagger.conf'
@@ -31,6 +32,7 @@ class App {
 	public doctorRouter: any
 	public especialidadRouter: any
 	public citaRouter: any
+	public formularioRouter: any
 
 
 	/**
@@ -63,12 +65,14 @@ class App {
 		this.doctorRouter = new DoctorRouter().router
 		this.especialidadRouter = new EspecialidadRouter().router
 		this.citaRouter = new CitaRouter().router
+		this.formularioRouter = new FormularioRoutes().router
 
 		// Configura las rutas para cada router.
 		this.app.use('/', this.pacienteRouter)
 		this.app.use('/', this.doctorRouter)
 		this.app.use('/', this.especialidadRouter)
 		this.app.use('/', this.citaRouter)
+		this.app.use('/', this.formularioRouter)
 	}
 
 	/**
