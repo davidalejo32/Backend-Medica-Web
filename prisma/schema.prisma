@@ -14,6 +14,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
+model Usuario {
+  idUsuario Int @id @default(autoincrement())
+  usuario String  @unique
+  contrasena String
+  nombre String
+  apellido String
+  fecha_nacimiento String
+}
+
+
 model Paciente {
   cedula           Int      @id
   nombre           String

@@ -10,9 +10,14 @@ import DoctorRouter from './routes/Doctor.routes'
 import EspecialidadRouter from './routes/Especialidad.routes'
 import CitaRouter from './routes/Cita.routes'
 import FormularioRoutes from './routes/Formulario.routes'
+import AuthRouter from './routes/Auth.routes'
+import miEstrategia from './config/passport'
+
+
 
 import swaggerUI from 'swagger-ui-express'
 import { swaggerSpec } from '../swagger.conf'
+import passport from 'passport'
 
 
 /**
@@ -33,6 +38,7 @@ class App {
 	public especialidadRouter: any
 	public citaRouter: any
 	public formularioRouter: any
+	public authRouter: any
 
 
 	/**
@@ -66,13 +72,18 @@ class App {
 		this.especialidadRouter = new EspecialidadRouter().router
 		this.citaRouter = new CitaRouter().router
 		this.formularioRouter = new FormularioRoutes().router
+		this.authRouter = new AuthRouter().router
 
 		// Configura las rutas para cada router.
-		this.app.use('/', this.pacienteRouter)
-		this.app.use('/', this.doctorRouter)
-		this.app.use('/', this.especialidadRouter)
-		this.app.use('/', this.citaRouter)
-		this.app.use('/', this.formularioRouter)
+		this.app.use('/', this.authRouter)
+		passport.use(miEstrategia)
+		this.app.use(passport.initialize())
+		this.app.use('/', passport.authenticate('jwt', {session:false}), this.pacienteRouter)
+		this.app.use('/', passport.authenticate('jwt', {session:false}), this.doctorRouter)
+		this.app.use('/', passport.authenticate('jwt', {session:false}), this.especialidadRouter)
+		this.app.use('/', passport.authenticate('jwt', {session:false}), this.citaRouter)
+		this.app.use('/', passport.authenticate('jwt', {session:false}), this.formularioRouter)
+		this.app.use('/', passport.authenticate('jwt', {session:false}), this.authRouter)
 	}
 
 	/**
